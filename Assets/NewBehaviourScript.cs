@@ -29,14 +29,20 @@ public class NewBehaviourScript : MonoBehaviour {
         Shader.SetGlobalMatrix("_ToLight", GL.GetGPUProjectionMatrix(off_camera.projectionMatrix,true) * off_camera.worldToCameraMatrix);
         off_camera.RenderWithShader(depth_prepass_shader, "");
 
-        Shader.SetGlobalTexture("_DepthPrepass", depth_rt);
-        off_camera.targetTexture = depth_difference_rt;
-        off_camera.RenderWithShader(depth_difference_shader, "");
+//        Shader.SetGlobalTexture("_DepthPrepass", depth_rt);
+//        off_camera.targetTexture = depth_difference_rt;
+//        off_camera.RenderWithShader(depth_difference_shader, "");
 
-        Shader.SetGlobalTexture("_DepthDifference", depth_difference_rt);
+        Shader.SetGlobalTexture("_DepthDifference", depth_rt);
+//        Shader.SetGlobalTexture("_DepthDifference", depth_difference_rt);
 
         off_camera.targetTexture = null;
 
+
+    }
+
+    void OnGUI()
+    {
 
     }
         
