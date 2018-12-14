@@ -25,6 +25,7 @@
 				float2 uv : TEXCOORD0;
 				float4 vertex : SV_POSITION;
                 float4 proj_pos : TEXCOORD1;
+                float depth : TEXCOORD2;
 			};
 
 			sampler2D _MainTex;
@@ -38,6 +39,7 @@
 				v2f o;
                 o.vertex = mul(_ToLight, mul(unity_ObjectToWorld, v.vertex));
                 o.proj_pos = mul(_ToLight, mul(unity_ObjectToWorld, v.vertex));
+                o.depth = o.vertex.z;
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				return o;
 			}
@@ -46,7 +48,9 @@
 			{
                 float2 uv = (i.proj_pos.xy/ i.proj_pos.w) * 0.5 + 0.5;
                 uv.y = 1-uv.y;
-                return (i.vertex.z - tex2D(_DepthPrepass, uv).r);
+//                return (i.vertex.z - tex2D(_DepthPrepass, uv).r);
+                return (i.depth - tex2D(_DepthPrepass, uv).r);
+
 			}
 			ENDCG
 		}
