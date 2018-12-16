@@ -47,7 +47,7 @@
 			fixed4 frag (v2f i) : SV_Target
 			{
                 return i.depth;
-                return i.vertex.z;
+//                return i.vertex.zzzz;
 			}
 			ENDCG
 		}

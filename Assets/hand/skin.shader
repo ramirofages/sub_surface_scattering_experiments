@@ -16,6 +16,7 @@
 
 		Pass
 		{
+            Tags { "RenderType"="Opaque" }
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -110,7 +111,7 @@
 
                 float normalized_depth = saturate(depth_difference/_MaxDepth);
                 float3 ramp = tex2D(_ColorRamp, float2(normalized_depth, 0)).rgb;
-
+                
                 return float4(ramp *light_strength,1);
 
 

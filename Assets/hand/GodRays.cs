@@ -12,25 +12,25 @@ public class GodRays : MonoBehaviour {
 
     public float speed = 1f;
     public float rotation = 1f;
-    Vector3 start_pos;
-    Quaternion start_rot;
+//    Vector3 start_pos;
+//    Quaternion start_rot;
 
     void Start()
     {
-        start_pos = transform.position;
-        start_rot = transform.rotation;
+//        start_pos = transform.position;
+//        start_rot = transform.rotation;
     }
-    void Update()
-    {
-        float time = Time.time/5f;
-        float dx_dy = Mathf.PerlinNoise(time, time + Time.deltaTime) - Mathf.PerlinNoise(time, time - Time.deltaTime);
-        float dy_dx = Mathf.PerlinNoise(time + Time.deltaTime, time ) - Mathf.PerlinNoise(time - Time.deltaTime, time);
-        Vector3 dir = new Vector3(dx_dy/2f, dy_dx/2f, 0);
-        //transform.position = start_pos + dir * speed;
-
-        Quaternion quat = Quaternion.AngleAxis(Mathf.Sin(Time.time) * rotation, Vector3.right);
-        transform.rotation = start_rot * quat;
-    }
+//    void Update()
+//    {
+//        float time = Time.time/5f;
+//        float dx_dy = Mathf.PerlinNoise(time, time + Time.deltaTime) - Mathf.PerlinNoise(time, time - Time.deltaTime);
+//        float dy_dx = Mathf.PerlinNoise(time + Time.deltaTime, time ) - Mathf.PerlinNoise(time - Time.deltaTime, time);
+////        Vector3 dir = new Vector3(dx_dy/2f, dy_dx/2f, 0);
+//        //transform.position = start_pos + dir * speed;
+//
+//        Quaternion quat = Quaternion.AngleAxis(Mathf.Sin(Time.time) * rotation, Vector3.right);
+//        transform.rotation = start_rot * quat;
+//    }
 	// Update is called once per frame
 	void OnRenderImage(RenderTexture src, RenderTexture dst) {
         Graphics.Blit(src,dst, rays);

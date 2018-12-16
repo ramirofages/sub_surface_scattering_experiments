@@ -72,8 +72,9 @@ Shader "Effects/Volumetric Lightning"
 				deltaTexCoord *= 1.0f / _NUM_SAMPLES * _Density;
 				half3 color = tex2D(_MainTex, texCoord);
 				half illuminationDecay = 1.0f;
-				
-				for (int i = 0; i < _NUM_SAMPLES; i++)
+
+                [unroll(70)]
+				for (int i = 0; i < 70; i++)
 				{
 					// Step sample location along ray.
 					texCoord -= deltaTexCoord;
